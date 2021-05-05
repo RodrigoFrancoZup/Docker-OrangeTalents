@@ -1,0 +1,7 @@
+FROM node:latest              # Indica que minha imagem vai usar a imagem node como base;
+MAINTAINER Rodrigo Franco     # Indica quem irá manter essa imagem;
+COPY . /var/www               # Indico que todos arquivos deve ir para a pasta /var/www (todos é indicado pelo ponto). Assim minha imagem vai ter o código fonte;
+WORKDIR /var/www              # Indico que assim que container for montado o seu terminal vai ser executado nessa pasta;
+RUN npm install               # Indico o comando que deve ser executado quando a imagem estiver sendo montada;
+ENTRYPOINT npm start          # Aqui eu indico o comnando que deve ser executado assim que o container é criado. Antigamente era indicado seguir o padrao JSON, no caso ["npm", "start"];
+EXPOSE 3000                   # O container vai usar a porta 3000 para rodar a aplicação.

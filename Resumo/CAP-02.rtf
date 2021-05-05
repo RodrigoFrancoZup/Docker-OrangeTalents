@@ -1,0 +1,119 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1046{\fonttbl{\f0\fnil\fcharset0 Arial;}{\f1\fnil\fcharset2 Symbol;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\fs24\lang22 Cap\'edtulo 02 - Trabalhando com as Imagens\par
+Neste cap\'edtulo aprendemos:\par
+\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1\b Docker run NomeDaImagem \b0\'e9 um comando para criar um container com a imagem NomeDaImagem, essa imagem deve estar no PC, caso n\'e3o esteja o Docker vai tentar puxar essa imagem no Docker Hub. Uma imagem \'e9 uma receita de bolo, que define como o container vai ser. Exemplo usando a imagem ubuntu: \b docker run ubuntu;\b0\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Criar um container e dar um nome a ele: \b docker run --name Meu-container-ubuntu ubuntu\par
+
+\pard\sa200\sl276\slmult1\b0\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1\b Docker ps \b0\'e9 o comando para listar todos containers ativos;\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1\b Docker ps -a \b0\'e9 o comando para listar todos os containers (mesmo os que est\'e3o no estado de parada).\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Quando criamos um container com uma imagem que n\'e3o executa nada, igual a imagem do Ubuntu o container ser\'e1 criado e ser\'e1 colocado no estado de parada. A imagem do Ubuntu n\'e3o executa nada, mas podemos fazer ela executar, executando ela com a imagem: \b docker run ubuntu echo "Ola mundo". \b0 O comando echo ser\'e1 executado dentro do container do ubuntu, depois disso ele ser\'e1 colocado no estado de parada;\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Podemos atrelar o nosso terminal com o terminal do container, basta passar a flag -it, por exemplo: \b docker run -it ubuntu \b0 Com isso o container do ubuntu ser\'e1 criado e o meu terminal agora est\'e1 atrelado com esse container, tudo que eu digitar no terminal ser\'e1 executado dentro do container do ubuntu. Para eu parar essa vincula\'e7\'e3o dos terminais basta apertar \b ctrl + d;\b0\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Se eu criei o container do ubuntu e ele n\'e3o executou nada ele vai para o estado de parada, como ativ\'e1-lo? Pois se eu digito docker run ubuntu eu vou criar outro container. Comando para ativar um container parado: \b docker start IdDoContainer \b0 Para conseguir esse id posso rodar o \b docker ps -a;\b0\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Para parar um comando, ou seja, coloc\'e1-lo em estado de parada: \b docker stop IdDoContainer.\b0  Esse comanda leva 10 segundos, para nao esperar basta passar o \b -t 0;\b0\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Quero "starta" um container e vincular meu terminal ao dele, comando para isso: \b docker -a -i IdDoContainer;\b0\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1\b Obs: N\'e3o precisamos digitar o IdDoContainer completo, basta o come\'e7o do n\'famero que o Docker reconhece!\b0\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1\b Obs2: Podemos combinar o comando com o flag --help, por exemplo docker run --help, assim ser\'e1 mostrado ajuda sobre o comando docker run, por exemplo quais flags esse comando aceita;\b0\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Comando para remover um container \'e9 \b docker rm IdDoContainer;\b0\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Comando para remover todos containers parados \'e9 \b docker container prune;\b0\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Comando para listar imagens (as receitas usada para criar o container) \'e9 \b Docker images;\b0\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Comando para remover imagens: \b Docker rmi NomeDaImagem;\b0\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Toda imagem que baixamos \'e9 composta por v\'e1rias camadas, essa camadas podem ser utilizadas em v\'e1rias imagens;\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Toda imagem tem as camadas apenas \b de leitura\b0 , ou seja, n\'e3o podemos escrever nelas, mas como conseguimos criar um arquivo na imagem do ubuntu? Simples, todo container \'e9 feito pelas camadas da imagem e \'e9 acrescentada uma camada (Layer) de leitura e escrita, e \'e9 nessa camada que vamos escrever, e n\'e3o na imagem em si.\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Imagens oficiais como ubuntu tem nome simples, j\'e1 imagens n\'e3o oficiais tem o padrao: NomDoUsuarioDono/NomeDaImagem\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 H\'e1 imagens que ao serem usadas para construir um container vai travar o terminal, pois ela vai ficar rodando um processo. Teremos que abrir outro terminal;\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Como usar imagens que v\'e3o executar algo sem travar o terminal? Basta usar o comando \b docker run -d NomeDaImagem;\b0\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Se eu quiser me comunicar com o container (com sua execu\'e7\'e3o) eu preciso mapear uma porta do meu PC com a do Container, para fazer isso automaticamente posso passar a flag \b -P, \b0 caso eu queira escolher a porta eu devo usar \b -p \b0 NumeroDaPorta. Exemplo: \b docker run -d -p 12345:80 dockersamples/static-site \b0 aqui mapei a minha porta do PC 12345 para a 80 do container;\b\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1\b0 Comando para saber o mapeamento de portas de um container: \b docker port IdDoContainer;\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1\b0 Comando para passar um valor para a vari\'e1vel de ambiente:\b  docker run -d -P -e AUTHOR="Rodrigo Franco" dockersamples/static-site \b0 aqui AUTHOR \'e9 a variavel do container, ela foi declarada na imagem dockersamples/static-site;\b\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1\b0 Comando para lista apenas os ID dos containers rodando: \b docker ps -q;\par
+
+\pard\sa200\sl276\slmult1\b0\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Para v\'e1rios containers de uma vez: \b docker stop -t0 $(docker ps -q);\b0\par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Os estados de um container: Ativo = Running / Parado = Stopped. Quando criamos um container ele come\'e7a como ativo, caso ele n\'e3o execute nada ele vai para parado. \par
+
+\pard\sa200\sl276\slmult1\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1\b Obs: Onde eu uso IdDoContainer eu tamb\'e9m posso usar o nome que eu dei ao container pelo flag --name\b0\par
+
+\pard\sa200\sl276\slmult1\par
+\par
+\par
+\par
+\par
+}
+ 

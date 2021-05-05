@@ -1,0 +1,60 @@
+version: '3'                                                   # Versão do arquivo .yml
+services:                                                      # Indica os serviços "containers" que vamos ter
+    nginx:                                                     # Aponta o primeiro serviço
+        build:                                                 # Indica que teremos que constuir uma imagem 
+            dockerfile: ./docker/nginx.dockerfile              # Aponta onde está o dockerfile - receita de bolo para criar uma imagem
+            context: .                                         # Por onde começa a buscar o dockerfile, o "." indica que é da pasta que nós estamos
+        image: rodrigofrancozup/nginx                          # Indica o nome que a imagem construída terá
+        container_name: nginx                                  # Indica o nome do container que vai armazenar o serviço
+        ports:                                                 # Mapeação das portas. Porta do meu PC : Porta do Container
+            - "80:80"
+        networks:                                              # Indica em qual rede o container vai utilizar
+            -  production-network
+        depends_on:                                            # Indica a ordem de criação dos serviços, no caso NGINX depende que NODE1, 2 E 3 ESTEJAM EXECUTANDO
+            - "node1"
+            - "node2"
+            - "node3"
+    mongodb:                                                   # Cria serviço mongodb
+        image: mongo                                           # Utiliza a imagem oficial do mong, por isso não precisamos buildar nada!
+        networks:
+            -  production-network    
+    node1:      
+        build:
+            dockerfile: ./docker/alura-books.dockerfile
+            context: .
+        image: rodrigofrancozup/alura-books
+        container_name: alura-books-1
+        ports:
+            - "3000"
+        networks:
+            -  production-network
+        depends_on: 
+            - "mongodb"
+    node2:
+        build:
+            dockerfile: ./docker/alura-books.dockerfile
+            context: .
+        image: rodrigofrancozup/alura-books
+        container_name: alura-books-2
+        ports:
+            - "3000"
+        networks:
+            -  production-network 
+        depends_on: 
+            - "mongodb"
+    node3:
+        build:
+            dockerfile: ./docker/alura-books.dockerfile
+            context: .
+        image: rodrigofrancozup/alura-books
+        container_name: alura-books-3
+        ports:
+            - "3000"
+        networks:
+            -  production-network
+        depends_on: 
+            - "mongodb"        
+networks:                                                       # Criando uma rede
+    production-network:                                         # Nome da rede  criada
+        driver: bridge                                          # Driver da rede que vamos criar
+
